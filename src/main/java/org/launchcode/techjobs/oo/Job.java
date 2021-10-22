@@ -14,7 +14,6 @@ public class Job {
 	private PositionType positionType;
 	private CoreCompetency coreCompetency;
 
-
 	public Job() {
 		id = nextId;
 		nextId++;
@@ -29,26 +28,29 @@ public class Job {
 		this.coreCompetency = coreCompetency;
 	}
 
-
 	public ArrayList<String> listClassValues() {
+
 		try {
-			String[] classValues =
-			{getName(),
+			String[] classValues = {
+			getName(),
 			getEmployer().toString(),
 			getLocation().toString(),
 			getPositionType().toString(),
-			getCoreCompetency().toString()};
+			getCoreCompetency().toString()
+			};
 
 			ArrayList<String> values = new ArrayList<>();
+
 			for (String classValue : classValues) {
-				if (classValue.isEmpty()) {
+				if (classValue.isBlank()) {
 					values.add("Data not available");
 				} else {
 					values.add(classValue);
 				}
 			}
 			return values;
-		} catch (Exception n) {
+
+		} catch (Exception e) {
 			return new ArrayList<>();
 		}
 	}
@@ -57,6 +59,7 @@ public class Job {
 	public String toString() {
 		String result;
 		ArrayList<String> values = listClassValues();
+
 		if (values.stream().distinct().count() <= 1) {
 			result = '\n' +
 			         "OOPS! This job does not seem to exist." +

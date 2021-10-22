@@ -82,12 +82,12 @@ public class JobTest {
 
 	@Test
 	public void testToStringHandlesEmptyField(){
-//		Job job1 = new Job();
+		Job job1 = new Job();
 		Job job2 = new Job("", new Employer(""), new Location("St. Louis"), new PositionType(
 		"Front-end developer"), new CoreCompetency("JavaScript"));
-//		assertEquals(job1.toString(), '\n' +
-//		                             "OOPS! This job does not seem to exist." +
-//		                             '\n');
+		assertEquals(job1.toString(), '\n' +
+		                             "OOPS! This job does not seem to exist." +
+		                             '\n');
 		assertEquals(job2.toString(), 		  '\n' +
 			                                   "ID: " + job2.getId() + '\n' +
 			                                   "Name: Data not available" + '\n' +

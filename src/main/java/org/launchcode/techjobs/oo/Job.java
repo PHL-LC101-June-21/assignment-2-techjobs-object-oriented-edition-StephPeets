@@ -1,15 +1,12 @@
 package org.launchcode.techjobs.oo;
 
-import java.awt.*;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Objects;
 
 public class Job {
 
-	private final Integer id;
-	private static Integer nextId = 1;
+	private final int id;
+	private static int nextId = 1;
 
 	private String name;
 	private Employer employer;
@@ -45,7 +42,7 @@ public class Job {
 			ArrayList<String> values = new ArrayList<>();
 			for (String classValue : classValues) {
 				if (classValue.isEmpty()) {
-					values.add("Data does not exist.");
+					values.add("Data not available");
 				} else {
 					values.add(classValue);
 				}
@@ -61,14 +58,16 @@ public class Job {
 		String result;
 		ArrayList<String> values = listClassValues();
 		if (values.stream().distinct().count() <= 1) {
-			result = "OOPS! This job does not seem to exist";
+			result = '\n' +
+			         "OOPS! This job does not seem to exist." +
+			         '\n';
 		} else {
-			result = "\nID: " + this.getId() + "\n" +
-			         "Name: " + values.get(0) + "\n" +
-			         "Employer: " + values.get(1) + "\n" +
-			         "Location: " + values.get(2) + "\n" +
-			         "Position Type: " + values.get(3) + "\n" +
-			         "Core Competency: " + values.get(4) + "\n";
+			result = '\n' + "ID: " + this.getId() + '\n' +
+			         "Name: " + values.get(0) + '\n' +
+			         "Employer: " + values.get(1) + '\n' +
+			         "Location: " + values.get(2) + '\n' +
+			         "Position Type: " + values.get(3) + '\n' +
+			         "Core Competency: " + values.get(4) + '\n';
 		}
 		return result;
 	}
@@ -88,8 +87,8 @@ public class Job {
 		return Objects.hash(getId());
 	}
 
-	public String getId() {
-		return id.toString();
+	public int getId() {
+		return id;
 	}
 
 	public String getName() {

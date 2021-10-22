@@ -63,8 +63,8 @@ public class JobTest {
 	@Test
 	public void testToStringStartsAndEndsWithNewLine(){
 		Job job = new Job();
-		assertEquals(job.toString().substring(0, 1), "\n");
-		assertEquals(job.toString().substring(job.toString().length()-1), "\n");
+		assertEquals(job.toString().charAt(0), '\n');
+		assertEquals(job.toString().charAt(job.toString().length()-1), '\n');
 	}
 
 	@Test
@@ -79,10 +79,21 @@ public class JobTest {
 			"Position Type: Front-end developer\n" +
 			"Core Competency: JavaScript\n");
 	}
+
+	@Test
+	public void testToStringHandlesEmptyField(){
+//		Job job1 = new Job();
+		Job job2 = new Job("", new Employer(""), new Location("St. Louis"), new PositionType(
+		"Front-end developer"), new CoreCompetency("JavaScript"));
+//		assertEquals(job1.toString(), '\n' +
+//		                             "OOPS! This job does not seem to exist." +
+//		                             '\n');
+		assertEquals(job2.toString(), 		  '\n' +
+			                                   "ID: " + job2.getId() + '\n' +
+			                                   "Name: Data not available" + '\n' +
+			                                   "Employer: Data not available" + '\n' +
+			                                   "Location: St. Louis" + '\n' +
+			                                   "Position Type: Front-end developer" + '\n' +
+			                                   "Core Competency: JavaScript" + '\n');
+	}
 }
-
-
-
-
-	/*int id, String name, Employer employer, Location location, PositionType positionType, CoreCompetency
-	 CoreCompetency */

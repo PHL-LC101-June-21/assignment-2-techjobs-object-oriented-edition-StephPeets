@@ -60,8 +60,25 @@ public class JobTest {
 		assertFalse(job.getId() == (job2.getId()));
 	}
 
+	@Test
+	public void testToStringStartsAndEndsWithNewLine(){
+		Job job = new Job();
+		assertEquals(job.toString().substring(0, 1), "\n");
+		assertEquals(job.toString().substring(job.toString().length()-1), "\n");
+	}
 
-
+	@Test
+	public void testToStringContainsCorrectLabelsAndData(){
+        Job job = new Job("Web Developer", new Employer("LaunchCode"), new Location("St. Louis"), new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
+		assertEquals(job.toString(),
+		  "\n" +
+			"ID: " + job.getId() + "\n" +
+			"Name: Web Developer\n" +
+			"Employer: LaunchCode\n" +
+			"Location: St. Louis\n" +
+			"Position Type: Front-end developer\n" +
+			"Core Competency: JavaScript\n");
+	}
 }
 
 
